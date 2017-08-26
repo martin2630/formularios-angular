@@ -1,0 +1,121 @@
+<h4>Formularios <small>DATA</small></h4>
+<hr>
+<form [formGroup]="forma" (ngSubmit)="guardarCambios()">
+
+  <div formGroupName="nombrecompleto">
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Nombre</label>
+      <div class="col-8">
+
+        <input class="form-control"
+               type="text"
+               placeholder="Nombre"
+               formControlName="nombre">
+
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Apellido</label>
+      <div class="col-8">
+
+        <input class="form-control"
+               type="text"
+               placeholder="Apellido"
+               formControlName="apellido">
+      </div>
+    </div>
+
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Correo</label>
+    <div class="col-md-8">
+
+      <input class="form-control"
+             type="email"
+             placeholder="Correo electrónico"
+             formControlName="correo">
+
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Correo</label>
+    <div class="col-md-8" formArrayName="pasatiempos" >
+
+      <input *ngFor="let pasatiempo of forma.controls['pasatiempos'].controls;let i = index;"
+
+          [formControlName]="i"
+          class="form-control"
+          type="text">
+
+    </div>
+
+    <button (click)="agregarPasatiempos()"
+            type="button" class="btn btn-primary">
+      Nuevo
+
+    </button>
+
+  </div>
+
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Username</label>
+    <div class="col-md-8">
+
+      <input class="form-control"
+             type="text"
+             placeholder="username"
+             formControlName="username">
+
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Password</label>
+    <div class="col-md-8">
+
+      <input class="form-control"
+             type="password"
+             placeholder="Password"
+             formControlName="password1">
+
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Repetir contraseña</label>
+    <div class="col-md-8">
+
+      <input class="form-control"
+             type="password"
+             placeholder="Repetir contraseña"
+             formControlName="password2"
+      >
+
+    </div>
+  </div>
+
+
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">&nbsp;</label>
+    <div class="input-group col-md-8">
+      <button type="submit" class="btn btn-outline-primary">
+        Guardar
+      </button>
+    </div>
+  </div>
+
+
+</form>
+
+
+{{ forma.valid}}
+{{ forma.status }}
+<pre>
+  {{ usuario | json }}
+</pre>
